@@ -1,69 +1,103 @@
-# React + TypeScript + Vite
+# React + Vite + TypeScript CRUD App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a modern CRUD application built using **React**, **Vite**, and **TypeScript** with full integration of **Redux Toolkit**, **TanStack Query**, **TanStack Table**, **Axios**, and **Tailwind CSS v4**. It fetches post data from `jsonplaceholder.typicode.com`, stores it in Redux, and supports full Create, Read, Update, and Delete operations.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ⚙️ Tech Stack
 
-## Expanding the ESLint configuration
+* **Frontend**: React, TypeScript, Vite
+* **State Management**: Redux Toolkit
+* **Server State Handling**: TanStack Query
+* **Table Rendering**: TanStack Table v8
+* **HTTP Client**: Axios
+* **Styling**: Tailwind CSS v4
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📁 Folder Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+.
+├── app/
+│   └── store.ts
+├── components/
+│   ├── Modal.tsx
+│   └── Table.tsx
+├── features/
+│   └── posts/
+│       ├── PostForm.tsx
+│       ├── PostView.tsx
+│       ├── postsAPI.ts
+│       ├── postsSlice.ts
+│       └── types.ts
+├── hooks/
+│   ├── useAppDispatch.ts
+│   ├── useAppSelector.ts
+│   └── usePostsData.ts
+├── lib/
+│   └── axiosInstance.ts
+├── utils/
+│   └── getMEX.ts
+└── main.tsx / App.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Features
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* Fetch posts using TanStack Query and cache data.
+* Store and manipulate posts in Redux state.
+* Perform Create, Read, Update, Delete (CRUD) operations.
+* Show posts in a fully sortable and searchable table.
+* Generate the smallest available ID (Mex) for new posts.
+* Responsive, styled UI with Tailwind CSS v4.
+
+---
+
+## 🧠 Concepts Demonstrated
+
+* Decoupling server state (TanStack Query) from global app state (Redux).
+* Custom reusable hooks (`usePostsData`, `useSortedFilteredPosts`, `useAppDispatch`, etc).
+* Dynamic table rendering with sorting/search.
+* Controlled components with trimmed input values.
+* Conditionally showing scrollbars based on content height.
+* Efficient modal UI for editing/creating posts.
+
+---
+
+## 📝 Setup Instructions
+
+1. **Clone this repo**
+
+   ```bash
+   git clone https://github.com/your-username/your-repo-name.git
+   cd your-repo-name
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 🧪 Notes
+
+* Data comes from the fake REST API: [jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com/posts)
+* MEX (Minimum Excluded Value) ensures unique post IDs even when posts are deleted.
+
+---
+
+## Live Demo
+
+* https://tanstack-crud-flame.vercel.app/
+
+---
